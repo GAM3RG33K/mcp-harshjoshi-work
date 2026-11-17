@@ -1,0 +1,37 @@
+{
+  "name": "mcp-all-my-work",
+  "version": "1.0.0",
+  "description": "MCP server exposing Harshvardhan Joshi's project catalog and professional profile as searchable tools.",
+  "type": "module",
+  "main": "dist/index.js",
+  "bin": {
+    "mcp-all-my-work": "dist/index.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsx src/index.ts",
+    "start": "node dist/index.js",
+    "eval": "tsx src/eval.ts",
+    "prepare:data": "tsx src/prepare-data.ts"
+  },
+  "keywords": [
+    "mcp",
+    "mcp-server",
+    "agents",
+    "ai-platform",
+    "portfolio",
+    "context-engineering",
+    "rag"
+  ],
+  "author": "Harshvardhan Joshi (GAM3RG33K)",
+  "license": "MIT",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.0.4",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.1",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.2"
+  }
+}

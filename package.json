@@ -1,11 +1,11 @@
 {
-  "name": "mcp-all-my-work",
+  "name": "mcp-harshjoshi-work",
   "version": "1.0.0",
   "description": "MCP server exposing Harshvardhan Joshi's project catalog and professional profile as searchable tools.",
   "type": "module",
   "main": "dist/index.js",
   "bin": {
-    "mcp-all-my-work": "dist/index.js"
+    "mcp-harshjoshi-work": "dist/index.js"
   },
   "scripts": {
     "build": "tsc",

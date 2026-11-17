@@ -1,4 +1,4 @@
-# mcp-all-my-work
+# mcp-harshjoshi-work
 
 An [MCP (Model Context Protocol)](https://modelcontextprotocol.io) server that exposes **Harshvardhan Joshi's** project catalog and professional profile as searchable tools for AI agents.
 
@@ -28,8 +28,8 @@ Any MCP-compatible client (Claude Code, Cursor, Windsurf, etc.) can ask:
 
 The catalog is generated from:
 
-- `/Users/w1n/ai/about-me/all_my_work.md` — full project catalog
-- `/Users/w1n/ai/about-me/professional_profile.md` — profile summary, skills, shipped apps
+- `all_my_work.md` — full project catalog
+- `professional_profile.md` — profile summary, skills, shipped apps
 
 Run `npm run prepare:data` to regenerate `data/catalog.json` when those files change.
 
@@ -48,9 +48,9 @@ Add to your `claude_desktop_config.json` or `mcp-config.json`:
 ```json
 {
   "mcpServers": {
-    "all-my-work": {
+    "harshjoshi-work": {
       "command": "node",
-      "args": ["/absolute/path/to/mcp-all-my-work/dist/index.js"]
+      "args": ["/absolute/path/to/mcp-harshjoshi-work/dist/index.js"]
     }
   }
 }
@@ -67,6 +67,10 @@ Runs a small regression suite of tool-call assertions against the prepared catal
 ## Stack
 
 TypeScript · MCP SDK · stdio transport
+
+## Why this exists
+
+This server is part of a deliberate shift toward AI platform engineering. It packages years of full-stack work into a structured, queryable context layer — the same kind of work required to build agent platforms: MCP connectors, evals, retrieval, and reusable skills.
 
 ## License
 

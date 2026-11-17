@@ -28,7 +28,7 @@ function scoreProject(project: Project, query: string): number {
 
 const server = new Server(
   {
-    name: "mcp-all-my-work",
+    name: "mcp-harshjoshi-work",
     version: "1.0.0",
   },
   {

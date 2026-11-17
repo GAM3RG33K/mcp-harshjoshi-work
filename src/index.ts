@@ -9,11 +9,45 @@ import { readFileSync } from "fs";
 import { join, dirname } from "path";
 import { fileURLToPath } from "url";
 import type { Catalog, Project } from "./types.js";
+import { buildCatalog } from "./catalog.js";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
-const catalog: Catalog = JSON.parse(
-  readFileSync(join(__dirname, "..", "data", "catalog.json"), "utf-8")
-);
+const DATA_DIR = join(__dirname, "..", "data");
+
+// Data files live inside this repo. At startup we prefer the live version on
+// GitHub so pushes to this repo are reflected without a reinstall; if the
+// network is unavailable we fall back to the bundled files, then catalog.json.
+const RAW_BASE =
+  "https://raw.githubusercontent.com/GAM3RG33K/mcp-harshjoshi-work/main/data";
+
+async function loadCatalog(): Promise<Catalog> {
+  try {
+    const [work, profile] = await Promise.all([
+      fetch(`${RAW_BASE}/all_my_work.md`).then((r) => {
+        if (!r.ok) throw new Error(`all_my_work.md: ${r.status}`);
+        return r.text();
+      }),
+      fetch(`${RAW_BASE}/professional_profile.md`).then((r) => {
+        if (!r.ok) throw new Error(`professional_profile.md: ${r.status}`);
+        return r.text();
+      }),
+    ]);
+    return buildCatalog(work, profile);
+  } catch {
+    try {
+      return buildCatalog(
+        readFileSync(join(DATA_DIR, "all_my_work.md"), "utf-8"),
+        readFileSync(join(DATA_DIR, "professional_profile.md"), "utf-8")
+      );
+    } catch {
+      return JSON.parse(
+        readFileSync(join(DATA_DIR, "catalog.json"), "utf-8")
+      ) as Catalog;
+    }
+  }
+}
+
+const catalog: Catalog = await loadCatalog();
 
 const CATEGORY_ORDER: Record<string, number> = {
   "AI Projects": 1,

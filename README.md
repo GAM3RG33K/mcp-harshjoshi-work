@@ -26,20 +26,24 @@ Any MCP-compatible client (Claude Code, Cursor, Windsurf, etc.) can ask:
 
 ## Data source
 
-The catalog is generated from GitHub-hosted Markdown files so the MCP server always reflects the live public data:
+Data files ship **inside this repo** and are the single source of truth:
 
-- [`all_my_work.md`](https://github.com/GAM3RG33K/resume-json/blob/main/all_my_work.md)
-- [`professional_profile.md`](https://github.com/GAM3RG33K/resume-json/blob/main/professional_profile.md)
+- [`data/all_my_work.md`](./data/all_my_work.md) — AI Projects → AI Tools → AI Skills → Non-AI Recent → Client Projects → Everything Else (recent first)
+- [`data/professional_profile.md`](./data/professional_profile.md) — sanitized public profile (no private career notes)
 
-Fetch is automatic during `npm run prepare:data`. If GitHub is unreachable (offline dev), the build falls back to local files in the same directory structure.
+At startup the server loads the catalog in this order:
 
-After changing those files on GitHub, run:
+1. Live `data/` files from this repo on GitHub (`raw.githubusercontent.com`) — so pushing an edit to this repo updates MCP responses immediately, no reinstall needed.
+2. Bundled `data/` files (works offline).
+3. Prebuilt `data/catalog.json` (last-resort fallback).
+
+After editing the data files, regenerate the committed fallback and verify:
 
 ```bash
-npm run prepare:data
+npm run prepare:data   # rebuilds data/catalog.json from data/*.md
+npm run eval           # 6/6 assertions
+npm run build
 ```
-
-to refresh `data/catalog.json` (or set up a GitHub Action / pre-commit hook to automate this).
 
 ## Install
 

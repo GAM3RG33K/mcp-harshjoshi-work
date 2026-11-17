@@ -1,0 +1,912 @@
+{
+  "generatedAt": "2026-11-17T17:36:11.148Z",
+  "projects": [
+    {
+      "name": "pixel-press",
+      "type": "Project (Desktop app)",
+      "category": "AI Projects",
+      "source": "AI Projects",
+      "what": "A local-first, offline-only desktop video compressor built with Tauri (Rust + React). Uses on-device LLM inference via llama.cpp (SmolLM2-360M GGUF) to translate plain-language intent into FFmpeg encode plans.",
+      "why": "Compress videos without uploading anything to the cloud — no subscription, no watermark, full privacy.",
+      "how": "Rust backend with native FFmpeg and llama.cpp subprocesses, React + Tailwind + shadcn/ui frontend, Bun build pipeline, GitHub Actions CI releasing DMG and AppImage/.deb for macOS and Linux.",
+      "order": 1001,
+      "github": "https://github.com/GAM3RG33K/pixel-press",
+      "tech": [
+        "rust",
+        "react",
+        "github actions",
+        "llama",
+        "tauri",
+        "tailwind",
+        "shadcn",
+        "bun",
+        "llm",
+        "ai",
+        "gguf",
+        "llama.cpp",
+        "ffmpeg",
+        "smollm"
+      ]
+    },
+    {
+      "name": "mcp-harshjoshi-work",
+      "type": "Project (MCP server)",
+      "category": "AI Projects",
+      "source": "AI Projects",
+      "what": "An MCP server that exposes my project catalog and professional profile as searchable tools.",
+      "why": "Demonstrates MCP server design, context/retrieval engineering, and tool-use for AI agents.",
+      "how": "TypeScript + official MCP SDK + stdio transport; parses Markdown sources into a queryable catalog; includes a 6-case eval harness.",
+      "order": 1002,
+      "github": "https://github.com/GAM3RG33K/mcp-harshjoshi-work",
+      "tech": [
+        "typescript",
+        "mcp"
+      ]
+    },
+    {
+      "name": "local-rag",
+      "type": "Project (notebook)",
+      "category": "AI Projects",
+      "source": "AI Projects",
+      "what": "Local RAG system for PDF resume review and cover letter generation using LangChain + Ollama.",
+      "why": "Enables private, local document analysis without sending sensitive resume data to cloud APIs.",
+      "how": "Built with Python, LangChain, Ollama (llama3), DocArrayInMemorySearch, Jupyter Notebook.",
+      "order": 1003,
+      "tech": [
+        "python",
+        "langchain",
+        "ollama",
+        "llama",
+        "rag",
+        "ai"
+      ]
+    },
+    {
+      "name": "local_webscraper",
+      "type": "Script",
+      "category": "AI Projects",
+      "source": "AI Projects",
+      "what": "Streamlit AI-powered web scraper using ScrapeGraphAI + local Ollama models.",
+      "why": "Provides a simple interface to extract structured data from any URL using natural language prompts.",
+      "how": "Built with Python, Streamlit, ScrapeGraphAI, Ollama.",
+      "order": 1004,
+      "tech": [
+        "python",
+        "ollama",
+        "llama",
+        "ai",
+        "ml"
+      ]
+    },
+    {
+      "name": "civit-ai-gallery",
+      "type": "Project",
+      "category": "AI Projects",
+      "source": "AI Projects",
+      "what": "A Pinterest-style masonry image gallery that fetches and displays AI-generated art from the CivitAI public API.",
+      "why": "Provides a beautiful, responsive way to browse CivitAI's vast library of AI art with validated, type-safe metadata.",
+      "how": "Built with Next.js, TypeScript, Zustand for state, Zod for validation, and Axios for API calls; deploys as a static export to GitHub Pages.",
+      "order": 1005,
+      "tech": [
+        "next.js",
+        "typescript",
+        "rest",
+        "ai"
+      ]
+    },
+    {
+      "name": "ai-cache-cleaner",
+      "type": "Tool",
+      "category": "AI Tools",
+      "source": "AI Tools",
+      "what": "Zero-dependency Bash tool for cleaning AI coding tool caches on macOS/Linux/Windows.",
+      "why": "AI editors accumulate gigabytes of cache; this tool cleans them all in one go with interactive selection.",
+      "how": "Pure Bash with ANSI TUI, supports 8+ AI tools including Cursor, Windsurf, Claude Code, OpenCode.",
+      "order": 2006,
+      "tech": [
+        "claude",
+        "ai"
+      ]
+    },
+    {
+      "name": "ollama-optimizer.sh",
+      "type": "Tool",
+      "category": "AI Tools",
+      "source": "AI Tools",
+      "what": "An interactive TUI that creates optimized Ollama model variants with custom context window sizes and names from any locally pulled model.",
+      "why": "Ollama's default context windows are often larger than needed, wasting VRAM.",
+      "how": "Bash script with `ollama list` for model discovery, generates temporary `Modelfile` with `PARAMETER num_ctx`, runs `ollama create`.",
+      "order": 2007,
+      "tech": [
+        "ollama",
+        "llama"
+      ]
+    },
+    {
+      "name": "mac-quantizer",
+      "type": "Tool",
+      "category": "AI Tools",
+      "source": "AI Tools",
+      "what": "A quantization toolkit for compressing ML models on Apple Silicon Macs, specifically optimized for DrawThings integration.",
+      "why": "Reduces model sizes by 50-70% (5-bit/8-bit) enabling large models to run on consumer Macs with limited RAM while maintaining quality.",
+      "how": "Uses PyTorch (torch-ao), Metal Performance Shaders (MPS), safetensors format, and aria2c for fast downloads, with conda/venv environment management.",
+      "order": 2008,
+      "tech": [
+        "ml",
+        "pytorch"
+      ]
+    },
+    {
+      "name": "ai-cache-cleaner.sh",
+      "type": "Tool",
+      "category": "AI Tools",
+      "source": "AI Tools",
+      "what": "An interactive TUI tool that clears cache and chat history files from 8 AI dev tools with optional backup.",
+      "why": "AI editors and assistants accumulate gigabytes of cache and chat data that eat disk space.",
+      "how": "Pure Bash with ANSI TUI (arrow-key navigation, braille spinners), `du`/`df` for size accounting, background `rm -rf` cleanup jobs.",
+      "order": 2009,
+      "tech": [
+        "ai"
+      ]
+    },
+    {
+      "name": "react-native-performance-analyzer",
+      "type": "Agent Skill",
+      "category": "AI Skills",
+      "source": "AI Skills",
+      "what": "AI agent skill that analyzes, improves, and validates React Native app performance.",
+      "why": "Finds real bottlenecks, applies safe surgical fixes, and proves results in release mode.",
+      "how": "Reusable skill workflow with analysis templates and report formats.",
+      "order": 3010,
+      "github": "https://github.com/GAM3RG33K/react-native-performance-analyzer",
+      "tech": [
+        "react native",
+        "react",
+        "ai"
+      ]
+    },
+    {
+      "name": "omniframe",
+      "type": "Agent Skill",
+      "category": "AI Skills",
+      "source": "AI Skills",
+      "what": "AI agent skill for video search and keyframe extraction from any local video.",
+      "why": "Helps agents find moments, scenes, objects, or visual details in screen recordings, reels, camera footage, or movies.",
+      "how": "Pure prompt/skill file using standard FFmpeg/ffprobe commands; no dependencies.",
+      "order": 3011,
+      "github": "https://github.com/GAM3RG33K/omniframe",
+      "tech": [
+        "ai",
+        "ffmpeg"
+      ]
+    },
+    {
+      "name": "git-what",
+      "type": "Agent Skill",
+      "category": "AI Skills",
+      "source": "AI Skills",
+      "what": "AI agent skill that generates release notes, commit summaries, and verification checklists from git history.",
+      "why": "Turns git history into plain, paste-ready summaries for release management and personal work reports.",
+      "how": "Pure prompt/skill file using standard git commands.",
+      "order": 3012,
+      "github": "https://github.com/GAM3RG33K/git-what",
+      "tech": [
+        "ai"
+      ]
+    },
+    {
+      "name": "project-cleaner.sh",
+      "type": "Tool",
+      "category": "Non-AI Recent Tools",
+      "source": "Non-AI Recent Tools",
+      "what": "An interactive TUI that batch-runs custom cleanup commands across multiple client project directories with admin privileges.",
+      "why": "Running clean scripts across four separate project directories manually is repetitive.",
+      "how": "Bash script with tput-based arrow-key TUI, `sudo -v` for credential caching, parallel `eval` of per-project commands.",
+      "order": 4013,
+      "tech": []
+    },
+    {
+      "name": "dev-cleaner",
+      "type": "Tool",
+      "category": "Non-AI Recent Tools",
+      "source": "Non-AI Recent Tools",
+      "what": "A one-click interactive cleanup utility that removes development junk files from Xcode, Flutter, Gradle, npm, Homebrew, and IDE caches to reclaim 50-100GB+ of disk space.",
+      "why": "Developers accumulate massive build artifacts and dependency caches across multiple ecosystems, and cleaning each one manually with different commands is time-consuming and easy to forget.",
+      "how": "Bash script with an interactive menu (tput-based TUI), recursive `find` for Flutter projects (pubspec.yaml detection), `rm -rf` for cache directories, and Homebrew tap support for macOS/Linux installation.",
+      "order": 4014,
+      "tech": [
+        "flutter",
+        "ai",
+        "ml"
+      ]
+    },
+    {
+      "name": "perfmon-lite",
+      "type": "Tool",
+      "category": "Non-AI Recent Tools",
+      "source": "Non-AI Recent Tools",
+      "what": "A blistering-fast, terminal-based mobile profiler that monitors CPU, memory, and thread telemetry for Android and iOS apps in real time.",
+      "why": "Gives mobile developers instant, zero-setup performance visibility without heavy IDE tools -- just connect a device and see live btop-style charts in your terminal.",
+      "how": "Written in Go using Bubble Tea for the TUI and Lipgloss for styling, with ADB for Android and xcrun for iOS; exports to JSON, Markdown, HTML, and PDF; ships as a single cross-platform binary.",
+      "order": 4015,
+      "github": "https://github.com/GAM3RG33K/perfmon-lite",
+      "tech": [
+        "go",
+        "ml"
+      ]
+    },
+    {
+      "name": "resume-generator",
+      "type": "Tool/Project",
+      "category": "Non-AI Recent Tools",
+      "source": "Non-AI Recent Tools",
+      "what": "A headless PDF generation API server that fetches resume JSON data, renders it through configurable templates, and returns polished PDF binaries.",
+      "why": "Provides a fast, template-driven, API-only way to programmatically generate customized resume PDFs without a headless browser.",
+      "how": "Built with Node.js, TypeScript, Fastify for HTTP, pdfmake for PDF rendering, in-memory content-hash caching, and deployed via Docker/CapRover.",
+      "order": 4016,
+      "tech": [
+        "node.js",
+        "typescript",
+        "fastify",
+        "docker",
+        "caprover"
+      ]
+    },
+    {
+      "name": "mac_htop.sh",
+      "type": "Tool",
+      "category": "Non-AI Recent Tools",
+      "source": "Non-AI Recent Tools",
+      "what": "A zero-dependency, htop-style real-time macOS system monitor that displays live CPU, RAM, disk usage, and GPU/VRAM info as colored progress bars in the terminal.",
+      "why": "macOS lacks a built-in visual resource monitor and installing htop via Homebrew is overkill when you just need a quick glance at system health.",
+      "how": "Pure Bash using `top -l 1` for CPU, `sysctl hw.memsize` + `vm_stat` for RAM, `df` for disk, `tput` for cursor control.",
+      "order": 4017,
+      "tech": []
+    },
+    {
+      "name": "flutter_live_activities",
+      "type": "Framework/Plugin (Flutter)",
+      "category": "Non-AI Recent Projects",
+      "source": "Non-AI Recent Projects",
+      "what": "Flutter plugin for iOS 16.1+ Live Activities and Dynamic Island features.",
+      "why": "Enables Flutter developers to implement real-time updates and Dynamic Island interactions on iOS devices.",
+      "how": "Built with Flutter/Dart, integrates with Apple's ActivityKit API for live notifications.",
+      "order": 5018,
+      "tech": [
+        "flutter",
+        "dart"
+      ]
+    },
+    {
+      "name": "linkstack",
+      "type": "Project",
+      "category": "Non-AI Recent Projects",
+      "source": "Non-AI Recent Projects",
+      "what": "Self-hosted \"link in bio\" tool with Vite + React + TailwindCSS.",
+      "why": "Provides a personal link aggregation page similar to LinkTree but self-hosted for full control.",
+      "how": "Built with Vite, React, TailwindCSS, deployed to links.harshjoshi.dev.",
+      "order": 5019,
+      "tech": [
+        "react",
+        "tailwind",
+        "vite",
+        "ai"
+      ]
+    },
+    {
+      "name": "lite-wait",
+      "type": "Tool/Project",
+      "category": "Non-AI Recent Projects",
+      "source": "Non-AI Recent Projects",
+      "what": "Lightweight waitlist management app with Python Flask and SQLite.",
+      "why": "Simple, self-hosted solution for managing email waitlists for product launches.",
+      "how": "Built with Python Flask, SQLite, HTML/CSS templates.",
+      "order": 5020,
+      "tech": [
+        "python",
+        "sqlite",
+        "ai",
+        "ml"
+      ]
+    },
+    {
+      "name": "memed-app",
+      "type": "Project (Flutter monorepo)",
+      "category": "Client Projects",
+      "source": "Client Projects",
+      "what": "Mobile content platform.",
+      "why": "",
+      "how": "Built with Flutter (Dart) in a Melos monorepo sharing core logic via `solo_core`, using BLoC/Cubit state management, Socket.IO for real-time updates, Firebase, Sentry, and GoRouter.",
+      "order": 6021,
+      "tech": [
+        "flutter",
+        "go",
+        "dart",
+        "firebase",
+        "socket.io",
+        "sentry"
+      ]
+    },
+    {
+      "name": "solo-app",
+      "type": "Project (Flutter monorepo)",
+      "category": "Client Projects",
+      "source": "Client Projects",
+      "what": "Creator economy platform.",
+      "why": "",
+      "how": "Flutter mobile app (BLoC/Cubit, GoRouter, Dio, Socket.IO) + React/TypeScript web dashboard (Vite, Tailwind, Radix/shadcn) + Node.js/Express API with Cashfree payments and AWS S3.",
+      "order": 6022,
+      "tech": [
+        "flutter",
+        "node.js",
+        "typescript",
+        "go",
+        "react",
+        "express",
+        "aws",
+        "tailwind",
+        "shadcn",
+        "radix",
+        "vite",
+        "socket.io",
+        "ai"
+      ]
+    },
+    {
+      "name": "VibeDiary",
+      "type": "Project (Full product suite)",
+      "category": "Client Projects",
+      "source": "Client Projects",
+      "what": "Voice-first AI journaling companion.",
+      "why": "",
+      "how": "Flutter mobile app (Riverpod, Dio, speech_to_text) + Node.js/Express backend with pluggable AI layer supporting Google Gemini, OpenAI GPT-4o-mini, and Anthropic Claude.",
+      "order": 6023,
+      "tech": [
+        "flutter",
+        "node.js",
+        "go",
+        "express",
+        "claude",
+        "gemini",
+        "gpt",
+        "openai",
+        "anthropic",
+        "ai"
+      ]
+    },
+    {
+      "name": "haptic_youtube_poc",
+      "type": "Project (Flutter POC)",
+      "category": "Client Projects",
+      "source": "Client Projects",
+      "what": "Flutter proof-of-concept for haptic feedback synced with YouTube video playback.",
+      "why": "",
+      "how": "Built with Flutter using Method Channels for native haptic integration.",
+      "order": 6024,
+      "tech": [
+        "flutter"
+      ]
+    },
+    {
+      "name": "ForTime Timer",
+      "type": "Project (Flutter App)",
+      "category": "Client Projects",
+      "source": "Client Projects",
+      "what": "A simple, customizable workout timer for functional fitness enthusiasts supporting modes like For Time, EMOM, Tabata, and Fight Gone Bad.",
+      "why": "",
+      "how": "Built with Flutter (Dart) using modular OOP architecture with stream-based state management.",
+      "order": 6025,
+      "tech": [
+        "flutter",
+        "go",
+        "dart"
+      ]
+    },
+    {
+      "name": "oddjobs",
+      "type": "Project (Full-stack web)",
+      "category": "Client Projects",
+      "source": "Client Projects",
+      "what": "Job referral marketplace.",
+      "why": "",
+      "how": "Next.js 15 (App Router, TypeScript) with React 19, TipTap editor, Radix UI, Tailwind CSS, MongoDB, Zustand, Twilio SMS.",
+      "order": 6026,
+      "tech": [
+        "next.js",
+        "typescript",
+        "go",
+        "react",
+        "mongodb",
+        "tailwind",
+        "radix",
+        "ai"
+      ]
+    },
+    {
+      "name": "goreach-app",
+      "type": "Project (React Native)",
+      "category": "Client Projects",
+      "source": "Client Projects",
+      "what": "Guided onboarding experience for a fintech wealth advisory product.",
+      "why": "",
+      "how": "React Native 0.82 (TypeScript strict, React 19) with Zustand, React Navigation, Reanimated v4, Google OAuth.",
+      "order": 6027,
+      "tech": [
+        "react native",
+        "typescript",
+        "go",
+        "react",
+        "oauth"
+      ]
+    },
+    {
+      "name": "tatva-app",
+      "type": "Project (React Native)",
+      "category": "Client Projects",
+      "source": "Client Projects",
+      "what": "News and article reading app with social features.",
+      "why": "",
+      "how": "React Native 0.82 (TypeScript strict, React 19) with Zustand, React Navigation v7, Firebase Cloud Messaging, Notifee, Better Auth.",
+      "order": 6028,
+      "tech": [
+        "react native",
+        "typescript",
+        "react",
+        "firebase"
+      ]
+    },
+    {
+      "name": "nextp",
+      "type": "Project (Web app)",
+      "category": "Client Projects",
+      "source": "Client Projects",
+      "what": "Enterprise web app for transfer pricing compliance workflows.",
+      "why": "",
+      "how": "React + TypeScript with Vite, shadcn-ui, Tailwind CSS, TanStack Query, CKEditor, Firebase Hosting.",
+      "order": 6029,
+      "tech": [
+        "typescript",
+        "react",
+        "firebase",
+        "tailwind",
+        "shadcn",
+        "vite",
+        "ai"
+      ]
+    },
+    {
+      "name": "goreach-mfd-customer-server",
+      "type": "Project (Backend)",
+      "category": "Client Projects",
+      "source": "Client Projects",
+      "what": "Spring Boot backend for a mutual fund distribution platform.",
+      "why": "",
+      "how": "Built with Java 25, Spring Boot 4, PostgreSQL, Flyway, Redis, Google OAuth, JWT auth.",
+      "order": 6030,
+      "tech": [
+        "go",
+        "java",
+        "postgresql",
+        "redis",
+        "oauth",
+        "jwt"
+      ]
+    },
+    {
+      "name": "art-flow-app",
+      "type": "Project (Flutter App)",
+      "category": "Everything Else",
+      "source": "Everything Else",
+      "what": "A mobile app for discovering, browsing, and setting AI-generated wallpapers from Civitai as your device background.",
+      "why": "It makes it effortless to find stunning AI art and personalize your phone with one tap, with favorites stored locally for privacy.",
+      "how": "Built with Flutter/Dart using Material Design 3, dio for API calls, cached_network_image, flutter_card_swiper, and native Method Channels for wallpaper setting.",
+      "order": 7031,
+      "tech": [
+        "flutter",
+        "dart",
+        "ai"
+      ]
+    },
+    {
+      "name": "steps_ahead",
+      "type": "Project (Flutter App)",
+      "category": "Everything Else",
+      "source": "Everything Else",
+      "what": "A personal footsteps and fitness tracker that counts steps, estimates calorie burn, and motivates users to reach daily activity goals.",
+      "why": "It keeps all health data local on-device for privacy while providing visual progress tracking and goal-setting to encourage consistent exercise.",
+      "how": "Built with Flutter using the Pedometer API for step counting, local storage for data persistence, and a clean UI inspired by the Forest app.",
+      "order": 7032,
+      "tech": [
+        "flutter",
+        "go",
+        "rest",
+        "rag",
+        "ai"
+      ]
+    },
+    {
+      "name": "your_compass",
+      "type": "Project (Flutter App)",
+      "category": "Everything Else",
+      "source": "Everything Else",
+      "what": "A digital companion for the YearCompass booklet, guiding users through reflecting on the past year and planning the next one.",
+      "why": "It makes the annual planning process more accessible and convenient by digitizing the YearCompass experience with offline capability and data privacy.",
+      "how": "Built with Flutter using local storage for all user data, offering sections for life evaluation, goal setting, and action planning.",
+      "order": 7033,
+      "tech": [
+        "flutter",
+        "go",
+        "rag"
+      ]
+    },
+    {
+      "name": "basecamp-book-extractor",
+      "type": "Tool",
+      "category": "Everything Else",
+      "source": "Everything Else",
+      "what": "Extracts content from Basecamp (specifically \"Shape Up\" book) via HTML TOC parsing.",
+      "why": "Convert Basecamp book content into cohesive, readable format.",
+      "how": "Python scripts (`bookify.py`, `extract_toc.py`) for HTML parsing and PDF generation.",
+      "order": 7034,
+      "tech": [
+        "python",
+        "ml"
+      ]
+    },
+    {
+      "name": "ffmpeg wrappers",
+      "type": "Tool",
+      "category": "Everything Else",
+      "source": "Everything Else",
+      "what": "Simple wrapper scripts for video to GIF/MP4 conversion.",
+      "why": "Quick one-liner commands for common video conversion tasks.",
+      "how": "Bash scripts wrapping ffmpeg with sensible defaults.",
+      "order": 7035,
+      "tech": [
+        "ffmpeg"
+      ]
+    },
+    {
+      "name": "aab-certs.sh",
+      "type": "Script",
+      "category": "Everything Else",
+      "source": "Everything Else",
+      "what": "Extracts signing certificate fingerprints from Android AAB files",
+      "why": "",
+      "how": "",
+      "order": 7036,
+      "tech": []
+    },
+    {
+      "name": "aab-to-apk.sh",
+      "type": "Script",
+      "category": "Everything Else",
+      "source": "Everything Else",
+      "what": "Converts Android App Bundles to universal APK files using bundletool",
+      "why": "",
+      "how": "",
+      "order": 7037,
+      "tech": [
+        "bun"
+      ]
+    },
+    {
+      "name": "apk-certs.sh",
+      "type": "Script",
+      "category": "Everything Else",
+      "source": "Everything Else",
+      "what": "Extracts signing certificate fingerprints from Android APK files",
+      "why": "",
+      "how": "",
+      "order": 7038,
+      "tech": []
+    },
+    {
+      "name": "de-bug.sh",
+      "type": "Script",
+      "category": "Everything Else",
+      "source": "Everything Else",
+      "what": "Uninstalls Android debug apps from connected devices via ADB",
+      "why": "",
+      "how": "",
+      "order": 7039,
+      "tech": []
+    },
+    {
+      "name": "delete-stale-branches.py",
+      "type": "Script",
+      "category": "Everything Else",
+      "source": "Everything Else",
+      "what": "Identifies and lists merged/stale Git branches, outputs to CSV",
+      "why": "",
+      "how": "",
+      "order": 7040,
+      "tech": []
+    },
+    {
+      "name": "delete-tag-remote.sh",
+      "type": "Script",
+      "category": "Everything Else",
+      "source": "Everything Else",
+      "what": "Deletes a remote Git tag from origin",
+      "why": "",
+      "how": "",
+      "order": 7041,
+      "tech": []
+    },
+    {
+      "name": "executor.sh",
+      "type": "Script",
+      "category": "Everything Else",
+      "source": "Everything Else",
+      "what": "Generic two-command sequential executor with interactive input",
+      "why": "",
+      "how": "",
+      "order": 7042,
+      "tech": []
+    },
+    {
+      "name": "git-summrizer.sh",
+      "type": "Script",
+      "category": "Everything Else",
+      "source": "Everything Else",
+      "what": "Exports Git commit range to text file with messages and diffs",
+      "why": "",
+      "how": "",
+      "order": 7043,
+      "tech": []
+    },
+    {
+      "name": "mac-tools",
+      "type": "Tool",
+      "category": "Everything Else",
+      "source": "Everything Else",
+      "what": "macOS utilities: Homebrew maintenance menu and architecture switcher",
+      "why": "",
+      "how": "",
+      "order": 7044,
+      "tech": [
+        "ai"
+      ]
+    },
+    {
+      "name": "md_xform",
+      "type": "Tool",
+      "category": "Everything Else",
+      "source": "Everything Else",
+      "what": "Python Markdown converter to HTML, DOCX, PDF, or plain text",
+      "why": "",
+      "how": "",
+      "order": 7045,
+      "tech": [
+        "python",
+        "ai",
+        "ml"
+      ]
+    },
+    {
+      "name": "mongodb-backup.sh",
+      "type": "Script",
+      "category": "Everything Else",
+      "source": "Everything Else",
+      "what": "Dumps remote MongoDB and restores locally with rename/restore options",
+      "why": "",
+      "how": "",
+      "order": 7046,
+      "tech": [
+        "go",
+        "mongodb",
+        "rest"
+      ]
+    },
+    {
+      "name": "project-utils",
+      "type": "Project",
+      "category": "Everything Else",
+      "source": "Everything Else",
+      "what": "Go microservice orchestration scripts with per-service management",
+      "why": "",
+      "how": "",
+      "order": 7047,
+      "tech": [
+        "go"
+      ]
+    },
+    {
+      "name": "reset-clean-flutter.sh",
+      "type": "Script",
+      "category": "Everything Else",
+      "source": "Everything Else",
+      "what": "Kills Dart processes, clears caches, runs flutter clean/pub get",
+      "why": "",
+      "how": "",
+      "order": 7048,
+      "tech": [
+        "flutter",
+        "dart"
+      ]
+    },
+    {
+      "name": "reset-ios-pods.sh",
+      "type": "Script",
+      "category": "Everything Else",
+      "source": "Everything Else",
+      "what": "Full Flutter CocoaPods reset and reinstall",
+      "why": "",
+      "how": "",
+      "order": 7049,
+      "tech": [
+        "flutter"
+      ]
+    },
+    {
+      "name": "switch-arch.sh",
+      "type": "Script",
+      "category": "Everything Else",
+      "source": "Everything Else",
+      "what": "Toggles Homebrew between Apple Silicon and Intel configurations",
+      "why": "",
+      "how": "",
+      "order": 7050,
+      "tech": []
+    }
+  ],
+  "profile": {
+    "summary": "Engineer with 9+ years shipping full-stack products (mobile, web, backend, tooling) in fintech and creator economy, now focused on AI platform infrastructure: agent runtimes, MCP servers, eval frameworks, guardrails, and observability. Built pixel-press (open-source, local-LLM desktop video compressor), mcp-harshjoshi-work (MCP server with an eval harness), local RAG pipelines with LangChain + Ollama, reusable agent skills, and an AI harness generator for undocumented projects. Previously led a 5-person full-stack pod at Signzy and cut mobile delivery time 87.5% through automation.",
+    "skills": {
+      "Flutter": {
+        "type": "Core",
+        "level": 90,
+        "since": 2018
+      },
+      "Node.js": {
+        "type": "Core",
+        "level": 90,
+        "since": 2022
+      },
+      "JavaScript/TypeScript": {
+        "type": "Core",
+        "level": 90,
+        "since": 2017
+      },
+      "Python": {
+        "type": "Core",
+        "level": 90,
+        "since": 2018
+      },
+      "React Native": {
+        "type": "Core",
+        "level": 85,
+        "since": 2021
+      },
+      "React/Next.js": {
+        "type": "Core",
+        "level": 85,
+        "since": 2023
+      },
+      "Kotlin": {
+        "type": "Core",
+        "level": 85,
+        "since": 2017
+      },
+      "Java SE/EE": {
+        "type": "Core",
+        "level": 80,
+        "since": 2017
+      },
+      "Swift": {
+        "type": "Core",
+        "level": 75,
+        "since": 2018
+      },
+      "Rust": {
+        "type": "Special",
+        "level": 70,
+        "since": 2024
+      },
+      "Go": {
+        "type": "Special",
+        "level": 75,
+        "since": 2024
+      },
+      "MCP": {
+        "type": "Special",
+        "level": 80,
+        "since": 2025
+      },
+      "LangChain": {
+        "type": "Special",
+        "level": 75,
+        "since": 2024
+      },
+      "Ollama": {
+        "type": "Special",
+        "level": 80,
+        "since": 2024
+      },
+      "OpenRouter": {
+        "type": "Special",
+        "level": 75,
+        "since": 2024
+      },
+      "llama.cpp": {
+        "type": "Special",
+        "level": 75,
+        "since": 2025
+      },
+      "RAG": {
+        "type": "Special",
+        "level": 70,
+        "since": 2024
+      },
+      "Firebase": {
+        "type": "Special",
+        "level": 90,
+        "since": 2017
+      },
+      "Express.js": {
+        "type": "Special",
+        "level": 90,
+        "since": 2024
+      },
+      "Generative AI": {
+        "type": "Special",
+        "level": 90,
+        "since": 2024
+      },
+      "Docker": {
+        "type": "Special",
+        "level": 80,
+        "since": 2023
+      },
+      "GitHub Actions": {
+        "type": "Special",
+        "level": 85,
+        "since": 2022
+      },
+      "Observability": {
+        "type": "Special",
+        "level": 70,
+        "since": 2023
+      },
+      "Prompt engineering": {
+        "type": "Special",
+        "level": 80,
+        "since": 2024
+      }
+    },
+    "experience": [],
+    "shippedApps": [
+      {
+        "name": "Investar Mobile",
+        "what": "Stock market analysis with real-time technical indicators",
+        "platforms": "Android, iOS (discontinued)",
+        "downloads": "100k+"
+      },
+      {
+        "name": "Tatva",
+        "what": "News and article app; comments, likes, saved posts, badges, push notifications",
+        "platforms": "Android, iOS",
+        "downloads": "100k+"
+      },
+      {
+        "name": "Meme'd",
+        "what": "Clipping platform; creators earn by posting brand-approved content",
+        "platforms": "Android, iOS, Web",
+        "downloads": "100k+"
+      },
+      {
+        "name": "Solo for Creators",
+        "what": "Creator economy platform with campaign discovery",
+        "platforms": "Android, iOS, Web",
+        "downloads": "50k+"
+      },
+      {
+        "name": "To-discord",
+        "what": "Browser extension to share links/text/media to Discord",
+        "platforms": "Chrome, Firefox",
+        "downloads": "1000+"
+      }
+    ]
+  }
+}

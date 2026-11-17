@@ -5,27 +5,74 @@ import type { Catalog, Project, ProfileData } from "./types.js";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, "..");
-const ABOUT_ME_DIR = "/Users/w1n/ai/about-me";
+
+// GitHub raw URLs for the public data files
+const ALL_MY_WORK_URL =
+  "https://raw.githubusercontent.com/GAM3RG33K/resume-json/refs/heads/main/all_my_work.md";
+const PROFESSIONAL_PROFILE_URL =
+  "https://raw.githubusercontent.com/GAM3RG33K/resume-json/refs/heads/main/professional_profile.md";
+
+// Fallback to local files if GitHub is unreachable (e.g., offline dev)
+const LOCAL_ABOUT_ME_DIR = "/Users/w1n/ai/about-me";
+
+const CATEGORY_ORDER: Record<string, number> = {
+  "AI Projects": 1,
+  "AI Tools": 2,
+  "AI Skills": 3,
+  "Non-AI Recent Tools": 4,
+  "Non-AI Recent Projects": 5,
+  "Client Projects": 6,
+  "Everything Else": 7,
+};
+
+async function fetchMarkdown(url: string, fallbackPath: string): Promise<string> {
+  try {
+    const response = await fetch(url, {
+      headers: { "User-Agent": "mcp-harshjoshi-work/prepare-data" },
+    });
+    if (!response.ok) {
+      throw new Error(`${response.status} ${response.statusText}`);
+    }
+    console.log(`Fetched ${url}`);
+    return await response.text();
+  } catch (err) {
+    console.warn(`GitHub fetch failed for ${url}, using local fallback: ${err}`);
+    return readFileSync(fallbackPath, "utf-8");
+  }
+}
 
 function parseAllMyWork(content: string): Project[] {
   const projects: Project[] = [];
   const lines = content.split(/\r?\n/);
 
-  let currentSection = "";
-  let currentCategory = "";
+  let currentSection = "Everything Else";
+  let currentCategory = currentSection;
   let pending: Partial<Project> | null = null;
+  let orderCounter = 0;
+
+  const sectionOrder = (section: string): number => {
+    if (section.startsWith("AI Projects")) return CATEGORY_ORDER["AI Projects"];
+    if (section.startsWith("AI Tools")) return CATEGORY_ORDER["AI Tools"];
+    if (section.startsWith("AI Skills")) return CATEGORY_ORDER["AI Skills"];
+    if (section.startsWith("Non-AI Recent Tools")) return CATEGORY_ORDER["Non-AI Recent Tools"];
+    if (section.startsWith("Non-AI Recent Projects")) return CATEGORY_ORDER["Non-AI Recent Projects"];
+    if (section.startsWith("Client Projects")) return CATEGORY_ORDER["Client Projects"];
+    return CATEGORY_ORDER["Everything Else"];
+  };
 
   for (let i = 0; i < lines.length; i++) {
     const line = lines[i];
 
+    // New category section: "## AI Projects", "## AI Tools", etc.
     if (line.startsWith("## ")) {
       currentSection = line.replace("## ", "").trim();
-      currentCategory = "";
+      currentCategory = currentSection;
       continue;
     }
 
+    // Agent Skills is a subheading under AI Skills, not its own section
     if (line.startsWith("### ")) {
-      currentCategory = line.replace("### ", "").trim();
+      // Keep current category as AI Skills
       continue;
     }
 
@@ -35,6 +82,7 @@ function parseAllMyWork(content: string): Project[] {
       if (pending?.name) {
         projects.push(pending as Project);
       }
+      orderCounter += 1;
       pending = {
         name: headerMatch[1].trim(),
         type: headerMatch[2].trim(),
@@ -43,30 +91,8 @@ function parseAllMyWork(content: string): Project[] {
         what: "",
         why: "",
         how: "",
+        order: sectionOrder(currentCategory) * 1000 + orderCounter,
       };
-      continue;
-    }
-
-    // Table rows for third party
-    if (line.startsWith("| **") && line.includes("|")) {
-      const cells = line.split("|").map((c) => c.trim());
-      if (cells.length >= 5) {
-        const name = cells[1].replace(/\*\*/g, "").trim();
-        const type = cells[2];
-        const author = cells[3];
-        const notes = cells[4];
-        if (name && name !== "Name") {
-          projects.push({
-            name,
-            type,
-            category: currentCategory,
-            source: currentSection,
-            what: notes,
-            why: `Third-party project by ${author}`,
-            how: "N/A",
-          });
-        }
-      }
       continue;
     }
 
@@ -75,17 +101,20 @@ function parseAllMyWork(content: string): Project[] {
     const whatMatch = line.match(/^What:\s*(.*)$/i);
     const whyMatch = line.match(/^Why:\s*(.*)$/i);
     const howMatch = line.match(/^How:\s*(.*)$/i);
+    const githubMatch = line.match(/^GitHub:\s*(.*)$/i);
 
     if (whatMatch) pending.what = whatMatch[1].trim();
     else if (whyMatch) pending.why = whyMatch[1].trim();
     else if (howMatch) pending.how = howMatch[1].trim();
+    else if (githubMatch) pending.github = githubMatch[1].trim();
   }
 
   if (pending?.name) {
     projects.push(pending as Project);
   }
 
-  return projects;
+  // Sort by order
+  return projects.sort((a, b) => a.order - b.order);
 }
 
 const TECH_TERMS = [
@@ -164,12 +193,11 @@ function parseProfessionalProfile(content: string): ProfileData {
   return profile;
 }
 
-function main() {
-  const allMyWork = readFileSync(join(ABOUT_ME_DIR, "all_my_work.md"), "utf-8");
-  const professionalProfile = readFileSync(
-    join(ABOUT_ME_DIR, "professional_profile.md"),
-    "utf-8"
-  );
+async function main() {
+  const [allMyWork, professionalProfile] = await Promise.all([
+    fetchMarkdown(ALL_MY_WORK_URL, join(LOCAL_ABOUT_ME_DIR, "all_my_work.md")),
+    fetchMarkdown(PROFESSIONAL_PROFILE_URL, join(LOCAL_ABOUT_ME_DIR, "professional_profile.md")),
+  ]);
 
   const projects = parseAllMyWork(allMyWork).map((p) => ({
     ...p,
@@ -188,4 +216,7 @@ function main() {
   console.log(`Prepared catalog with ${projects.length} projects`);
 }
 
-main();
+main().catch((err) => {
+  console.error(err);
+  process.exit(1);
+});

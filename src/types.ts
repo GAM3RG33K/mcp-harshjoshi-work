@@ -1,12 +1,14 @@
 export interface Project {
   name: string;
   type: string;
-  category: string; // e.g., "Created By Me", "Maintained Fork", "Client Project"
-  source: string; // directory/section name
+  category: string; // e.g., "AI Projects", "AI Tools", "Client Projects", ...
+  source: string; // section name
   what: string;
   why: string;
   how: string;
+  github?: string;
   tech?: string[];
+  order: number; // for sorting: AI Projects first, etc.
 }
 
 export interface ExperienceEntry {

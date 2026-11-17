@@ -15,15 +15,42 @@ const catalog: Catalog = JSON.parse(
   readFileSync(join(__dirname, "..", "data", "catalog.json"), "utf-8")
 );
 
+const CATEGORY_ORDER: Record<string, number> = {
+  "AI Projects": 1,
+  "AI Tools": 2,
+  "AI Skills": 3,
+  "Non-AI Recent Tools": 4,
+  "Non-AI Recent Projects": 5,
+  "Client Projects": 6,
+  "Everything Else": 7,
+};
+
+function categoryRank(category: string): number {
+  return CATEGORY_ORDER[category] ?? CATEGORY_ORDER["Everything Else"];
+}
+
+const STOPWORDS = new Set(["ai", "a", "the", "and", "or", "of", "in", "on", "for", "with", "to"]);
+
 function scoreProject(project: Project, query: string): number {
-  const terms = query.toLowerCase().split(/\s+/).filter(Boolean);
-  const text = `${project.name} ${project.type} ${project.what} ${project.why} ${project.how} ${project.tech?.join(" ") ?? ""}`.toLowerCase();
+  const terms = query.toLowerCase().split(/\s+/).filter((t) => t && !STOPWORDS.has(t));
+  const text = `${project.name} ${project.type} ${project.category} ${project.what} ${project.why} ${project.how} ${project.github ?? ""} ${project.tech?.join(" ") ?? ""}`.toLowerCase();
   let score = 0;
   for (const term of terms) {
     if (project.name.toLowerCase().includes(term)) score += 5;
+    if (project.category.toLowerCase().includes(term)) score += 3;
     if (text.includes(term)) score += 1;
   }
+  // Strong boost for AI projects/tools/skills on AI-related queries
+  if (/ai|llm|agent|mcp|rag|ollama|openrouter|llama|gpt|claude|gemini/.test(query.toLowerCase())) {
+    if (project.category.startsWith("AI")) score += 10;
+  }
   return score;
+}
+
+function compareProjects(a: Project, b: Project): number {
+  const orderA = a.order ?? categoryRank(a.category) * 1000;
+  const orderB = b.order ?? categoryRank(b.category) * 1000;
+  return orderA - orderB;
 }
 
 const server = new Server(
@@ -43,7 +70,7 @@ server.setRequestHandler(ListToolsRequestSchema, async () => {
     tools: [
       {
         name: "search_projects",
-        description: "Search Harshvardhan Joshi's project catalog by keyword, technology, or domain.",
+        description: "Search Harshvardhan Joshi's project catalog by keyword, technology, or domain. Results are ranked by relevance with AI Projects, AI Tools, and AI Skills prioritized; ties break in catalog order.",
         inputSchema: {
           type: "object",
           properties: {
@@ -97,7 +124,7 @@ server.setRequestHandler(ListToolsRequestSchema, async () => {
       },
       {
         name: "find_projects_by_criteria",
-        description: "Find projects by domain, technology, or career era.",
+        description: "Find projects by domain, technology, or category. Results are ordered by catalog priority (AI Projects → AI Tools → AI Skills → Non-AI Recent → Client Projects → Everything Else).",
         inputSchema: {
           type: "object",
           properties: {
@@ -134,13 +161,14 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
     const results = catalog.projects
       .map((p) => ({ project: p, score: scoreProject(p, query) }))
       .filter((r) => r.score > 0)
-      .sort((a, b) => b.score - a.score)
+      .sort((a, b) => b.score - a.score || compareProjects(a.project, b.project))
       .slice(0, limit)
       .map((r) => ({
         name: r.project.name,
         type: r.project.type,
         category: r.project.category,
         what: r.project.what,
+        github: r.project.github,
         tech: r.project.tech,
       }));
 
@@ -231,17 +259,19 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
     const results = catalog.projects
       .filter((p) => {
         if (category && !p.category.toLowerCase().includes(category)) return false;
-        const text = `${p.name} ${p.type} ${p.what} ${p.why} ${p.how} ${p.tech?.join(" ") ?? ""}`.toLowerCase();
+        const text = `${p.name} ${p.type} ${p.category} ${p.what} ${p.why} ${p.how} ${p.github ?? ""} ${p.tech?.join(" ") ?? ""}`.toLowerCase();
         if (domain && !text.includes(domain)) return false;
         if (tech && !p.tech?.some((t) => t.includes(tech))) return false;
         return true;
       })
+      .sort(compareProjects)
       .slice(0, limit)
       .map((p) => ({
         name: p.name,
         type: p.type,
         category: p.category,
         what: p.what,
+        github: p.github,
         tech: p.tech,
       }));
 

@@ -14,23 +14,43 @@ interface EvalCase {
 }
 
 function runTool(tool: string, input: Record<string, unknown>): unknown {
-  // Lightweight in-process simulation of tool logic (kept in sync with index.ts)
   if (tool === "search_projects") {
     const query = String(input.query ?? "").toLowerCase();
     const limit = Number(input.limit ?? 10);
-    const terms = query.split(/\s+/).filter(Boolean);
+    const STOPWORDS = new Set(["ai", "a", "the", "and", "or", "of", "in", "on", "for", "with", "to"]);
+    const terms = query.split(/\s+/).filter((t) => t && !STOPWORDS.has(t));
+
+    const categoryOrder: Record<string, number> = {
+      "AI Projects": 1,
+      "AI Tools": 2,
+      "AI Skills": 3,
+      "Non-AI Recent Tools": 4,
+      "Non-AI Recent Projects": 5,
+      "Client Projects": 6,
+      "Everything Else": 7,
+    };
+
     return catalog.projects
       .map((p) => {
-        const text = `${p.name} ${p.type} ${p.what} ${p.why} ${p.how} ${p.tech?.join(" ") ?? ""}`.toLowerCase();
+        const text = `${p.name} ${p.type} ${p.category} ${p.what} ${p.why} ${p.how} ${p.github ?? ""} ${p.tech?.join(" ") ?? ""}`.toLowerCase();
         let score = 0;
         for (const term of terms) {
           if (p.name.toLowerCase().includes(term)) score += 5;
+          if (p.category.toLowerCase().includes(term)) score += 3;
           if (text.includes(term)) score += 1;
+        }
+        if (/ai|llm|agent|mcp|rag|ollama|openrouter|llama|gpt|claude|gemini/.test(query)) {
+          if (p.category.startsWith("AI")) score += 10;
         }
         return { project: p, score };
       })
       .filter((r) => r.score > 0)
-      .sort((a, b) => b.score - a.score)
+      .sort((a, b) => {
+        const scoreDiff = b.score - a.score;
+        if (scoreDiff !== 0) return scoreDiff;
+        return (a.project.order ?? categoryOrder[a.project.category] ?? 999) -
+               (b.project.order ?? categoryOrder[b.project.category] ?? 999);
+      })
       .slice(0, limit)
       .map((r) => r.project.name);
   }
@@ -60,8 +80,18 @@ function runTool(tool: string, input: Record<string, unknown>): unknown {
 
   if (tool === "find_projects_by_criteria") {
     const tech = String(input.tech ?? "").toLowerCase();
+    const categoryOrder: Record<string, number> = {
+      "AI Projects": 1,
+      "AI Tools": 2,
+      "AI Skills": 3,
+      "Non-AI Recent Tools": 4,
+      "Non-AI Recent Projects": 5,
+      "Client Projects": 6,
+      "Everything Else": 7,
+    };
     return catalog.projects
       .filter((p) => (tech ? p.tech?.some((t) => t.includes(tech)) : true))
+      .sort((a, b) => (a.order ?? categoryOrder[a.category] ?? 999) - (b.order ?? categoryOrder[b.category] ?? 999))
       .slice(0, Number(input.limit ?? 10))
       .map((p) => p.name);
   }
@@ -81,13 +111,14 @@ const cases: EvalCase[] = [
     },
   },
   {
-    name: "Search finds AI projects",
+    name: "AI projects rank first for AI queries",
     tool: "search_projects",
-    input: { query: "LLM local inference" },
+    input: { query: "AI agent infrastructure" },
     check: (result) => {
       const names = result as string[];
-      const pass = names.length > 0;
-      return { pass, reason: pass ? `${names.length} results` : "no results" };
+      const aiLeaders = ["pixel-press", "mcp-harshjoshi-work", "local-rag"];
+      const pass = aiLeaders.some((n) => names.slice(0, 3).includes(n));
+      return { pass, reason: pass ? `top results: ${names.slice(0, 3).join(", ")}` : `AI projects not in top 3: ${names.slice(0, 5).join(", ")}` };
     },
   },
   {
@@ -119,7 +150,7 @@ const cases: EvalCase[] = [
     },
   },
   {
-    name: "Find rust projects",
+    name: "Find rust projects prioritizes pixel-press",
     tool: "find_projects_by_criteria",
     input: { tech: "rust", limit: 5 },
     check: (result) => {

@@ -26,12 +26,20 @@ Any MCP-compatible client (Claude Code, Cursor, Windsurf, etc.) can ask:
 
 ## Data source
 
-The catalog is generated from:
+The catalog is generated from GitHub-hosted Markdown files so the MCP server always reflects the live public data:
 
-- `all_my_work.md` — full project catalog
-- `professional_profile.md` — profile summary, skills, shipped apps
+- [`all_my_work.md`](https://github.com/GAM3RG33K/resume-json/blob/main/all_my_work.md)
+- [`professional_profile.md`](https://github.com/GAM3RG33K/resume-json/blob/main/professional_profile.md)
 
-Run `npm run prepare:data` to regenerate `data/catalog.json` when those files change.
+Fetch is automatic during `npm run prepare:data`. If GitHub is unreachable (offline dev), the build falls back to local files in the same directory structure.
+
+After changing those files on GitHub, run:
+
+```bash
+npm run prepare:data
+```
+
+to refresh `data/catalog.json` (or set up a GitHub Action / pre-commit hook to automate this).
 
 ## Install
 

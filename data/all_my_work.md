@@ -13,20 +13,26 @@
 
 ## AI Projects
 
+**Custom AI Harness + Harness Generator** | Project (Agent SDLC rules system)
+What: A reusable agent-SDLC rules system I use across my projects and job codebases — pixel-press and omniframe, plus the Tatva, Meme'd and Solo apps. Generates `.ai/rules/` for undocumented projects: plan scoring, verification gates, and decision writeback, so agents ship reliably on real production code.
+Why: Agents fail on undocumented codebases; the harness makes every project agent-ready, from planning to verified implementation and documented decisions.
+How: Structured Markdown/prompt rules (HARNESS_GENERATOR v2.2) orchestrated with Cursor and anti-gravity workflows; enforced plan scoring (all dimensions ≥8), blocker gates, subagent delegation, and writeback to `.ai/rules/` + `.ai/decisions/`.
+GitHub: https://github.com/GAM3RG33K/omniframe
+
 **pixel-press** | Project (Desktop app)
-What: A local-first, offline-only desktop video compressor built with Tauri (Rust + React). Uses on-device LLM inference via llama.cpp (SmolLM2-360M GGUF) to translate plain-language intent into FFmpeg encode plans.
+What: Local-first, offline desktop video compressor. On-device LLM inference (llama.cpp, SmolLM2-360M) translates plain-language intent into FFmpeg encode plans.
 Why: Compress videos without uploading anything to the cloud — no subscription, no watermark, full privacy.
-How: Rust backend with native FFmpeg and llama.cpp subprocesses, React + Tailwind + shadcn/ui frontend, Bun build pipeline, GitHub Actions CI releasing DMG and AppImage/.deb for macOS and Linux.
+How: Rust backend with native FFmpeg and llama.cpp subprocesses, React + Tailwind + shadcn/ui frontend, Bun build pipeline, GitHub Actions CI releasing DMG and AppImage/.deb for macOS and Linux. In active development, shipping via GitHub Releases.
 GitHub: https://github.com/GAM3RG33K/pixel-press
 
 **mcp-harshjoshi-work** | Project (MCP server)
-What: An MCP server that exposes my project catalog and professional profile as searchable tools.
+What: MCP server exposing my project catalog and professional profile as searchable tools.
 Why: Demonstrates MCP server design, context/retrieval engineering, and tool-use for AI agents.
-How: TypeScript + official MCP SDK + stdio transport; parses Markdown sources into a queryable catalog; includes a 6-case eval harness.
+How: TypeScript + official MCP SDK; includes a 6-case eval harness. Live-hosted data files inside this repo; server prefers the live GitHub copy with bundled fallback.
 GitHub: https://github.com/GAM3RG33K/mcp-harshjoshi-work
 
 **local-rag** | Project (notebook)
-What: Local RAG system for PDF resume review and cover letter generation using LangChain + Ollama.
+What: Local, private RAG pipeline for resume review and cover-letter generation (LangChain + Ollama); no document leaves your machine.
 Why: Enables private, local document analysis without sending sensitive resume data to cloud APIs.
 How: Built with Python, LangChain, Ollama (llama3), DocArrayInMemorySearch, Jupyter Notebook.
 
@@ -68,13 +74,7 @@ How: Pure Bash with ANSI TUI (arrow-key navigation, braille spinners), `du`/`df`
 
 ## AI Skills
 
-Reusable skills for AI coding agents.
-
-**react-native-performance-analyzer** | Agent Skill
-What: AI agent skill that analyzes, improves, and validates React Native app performance.
-Why: Finds real bottlenecks, applies safe surgical fixes, and proves results in release mode.
-How: Reusable skill workflow with analysis templates and report formats.
-GitHub: https://github.com/GAM3RG33K/react-native-performance-analyzer
+Reusable skills for AI coding agents (work across Claude Code, Cursor, Codex and similar agents).
 
 **omniframe** | Agent Skill
 What: AI agent skill for video search and keyframe extraction from any local video.
@@ -87,6 +87,12 @@ What: AI agent skill that generates release notes, commit summaries, and verific
 Why: Turns git history into plain, paste-ready summaries for release management and personal work reports.
 How: Pure prompt/skill file using standard git commands.
 GitHub: https://github.com/GAM3RG33K/git-what
+
+**react-native-performance-analyzer** | Agent Skill
+What: AI agent skill that analyzes, improves, and validates React Native performance — analyze → fix → validate in release mode.
+Why: Finds real bottlenecks, applies safe surgical fixes, and proves results in release mode.
+How: Reusable skill workflow with 11 analysis areas and analysis/report templates.
+GitHub: https://github.com/GAM3RG33K/react-native-performance-analyzer
 
 ---
 
@@ -238,14 +244,14 @@ How: Bash scripts wrapping ffmpeg with sensible defaults.
 
 | Category | Count |
 |----------|-------|
-| AI Projects | 5 |
+| AI Projects | 6 |
 | AI Tools | 4 |
 | AI Skills | 3 |
 | Non-AI Recent Tools | 5 |
 | Non-AI Recent Projects | 3 |
 | Client Projects | 10 |
 | Everything Else | 5 + 15 scripts |
-| **Total** | **50** |
+| **Total** | **51** |
 
 ---
 

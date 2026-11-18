@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-18T09:08:06.796Z",
+  "generatedAt": "2026-11-18T09:13:09.793Z",
   "projects": [
     {
       "name": "Custom AI Harness + Harness Generator",
@@ -765,63 +765,8 @@
     }
   ],
   "profile": {
-    "summary": "Engineer with 9+ years shipping full-stack products (mobile, web, backend, tooling) in fintech and creator economy, now focused on AI platform infrastructure: agent runtimes, MCP servers, eval frameworks, guardrails, and observability. Built pixel-press (open-source, local-LLM desktop video compressor), mcp-harshjoshi-work (MCP server with an eval harness), local RAG pipelines with LangChain + Ollama, reusable agent skills, and an AI harness generator for undocumented projects. Previously led a 5-person full-stack pod at Signzy and cut mobile delivery time 87.5% through automation.",
+    "summary": "Engineer with 9 years shipping full-stack products in fintech and creator economy (apps at 350k+ downloads). Built a custom AI harness + harness generator spanning my projects and job codebases; pixel-press, an offline-first video compressor powered by on-device LLM inference; and mcp-harshjoshi-work, an MCP server with an eval harness. Now focused on AI platform work: agent harnesses, evals, and tooling. Previously led a 5-person full-stack pod at Signzy and cut mobile delivery time 87.5% through automation.",
     "skills": {
-      "Flutter": {
-        "type": "Core",
-        "level": 90,
-        "since": 2018
-      },
-      "Node.js": {
-        "type": "Core",
-        "level": 90,
-        "since": 2022
-      },
-      "JavaScript/TypeScript": {
-        "type": "Core",
-        "level": 90,
-        "since": 2017
-      },
-      "Python": {
-        "type": "Core",
-        "level": 90,
-        "since": 2018
-      },
-      "React Native": {
-        "type": "Core",
-        "level": 85,
-        "since": 2021
-      },
-      "React/Next.js": {
-        "type": "Core",
-        "level": 85,
-        "since": 2023
-      },
-      "Kotlin": {
-        "type": "Core",
-        "level": 85,
-        "since": 2017
-      },
-      "Java SE/EE": {
-        "type": "Core",
-        "level": 80,
-        "since": 2017
-      },
-      "Swift": {
-        "type": "Core",
-        "level": 75,
-        "since": 2018
-      },
-      "Rust": {
-        "type": "Special",
-        "level": 70,
-        "since": 2024
-      },
-      "Go": {
-        "type": "Special",
-        "level": 75,
-        "since": 2024
-      },
       "MCP": {
         "type": "Special",
         "level": 80,
@@ -852,20 +797,60 @@
         "level": 70,
         "since": 2024
       },
-      "Firebase": {
+      "Prompt engineering": {
         "type": "Special",
-        "level": 90,
-        "since": 2017
-      },
-      "Express.js": {
-        "type": "Special",
-        "level": 90,
+        "level": 80,
         "since": 2024
       },
       "Generative AI": {
         "type": "Special",
         "level": 90,
         "since": 2024
+      },
+      "TypeScript/JavaScript": {
+        "type": "Core",
+        "level": 90,
+        "since": 2017
+      },
+      "Python": {
+        "type": "Core",
+        "level": 90,
+        "since": 2018
+      },
+      "Go": {
+        "type": "Special",
+        "level": 75,
+        "since": 2024
+      },
+      "Rust": {
+        "type": "Special",
+        "level": 70,
+        "since": 2024
+      },
+      "React/Next.js": {
+        "type": "Core",
+        "level": 85,
+        "since": 2023
+      },
+      "Node.js": {
+        "type": "Core",
+        "level": 90,
+        "since": 2022
+      },
+      "Express.js": {
+        "type": "Special",
+        "level": 90,
+        "since": 2024
+      },
+      "PostgreSQL": {
+        "type": "Special",
+        "level": 75,
+        "since": 2022
+      },
+      "MongoDB": {
+        "type": "Special",
+        "level": 75,
+        "since": 2022
       },
       "Docker": {
         "type": "Special",
@@ -877,15 +862,30 @@
         "level": 85,
         "since": 2022
       },
-      "Observability": {
+      "AWS S3": {
+        "type": "Special",
+        "level": 75,
+        "since": 2022
+      },
+      "Firebase": {
+        "type": "Special",
+        "level": 90,
+        "since": 2017
+      },
+      "Supabase": {
         "type": "Special",
         "level": 70,
-        "since": 2023
-      },
-      "Prompt engineering": {
-        "type": "Special",
-        "level": 80,
         "since": 2024
+      },
+      "Flutter": {
+        "type": "Core",
+        "level": 90,
+        "since": 2018
+      },
+      "React Native": {
+        "type": "Core",
+        "level": 85,
+        "since": 2021
       }
     },
     "experience": [],

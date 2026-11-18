@@ -16,19 +16,18 @@
 
 ## Headline
 
-AI Platform Engineer · Agent Infrastructure, MCP Servers & Local LLMs · TypeScript · Python · Go · Rust
+AI Platform Engineer | AI Infrastructure & Tooling
 
 ## Summary
 
-Engineer with 9+ years shipping full-stack products (mobile, web, backend, tooling) in fintech and creator economy, now focused on AI platform infrastructure: agent runtimes, MCP servers, eval frameworks, guardrails, and observability. Built pixel-press (open-source, local-LLM desktop video compressor), mcp-harshjoshi-work (MCP server with an eval harness), local RAG pipelines with LangChain + Ollama, reusable agent skills, and an AI harness generator for undocumented projects. Previously led a 5-person full-stack pod at Signzy and cut mobile delivery time 87.5% through automation.
+Engineer with 9 years shipping full-stack products in fintech and creator economy (apps at 350k+ downloads). Built a custom AI harness + harness generator spanning my projects and job codebases; pixel-press, an offline-first video compressor powered by on-device LLM inference; and mcp-harshjoshi-work, an MCP server with an eval harness. Now focused on AI platform work: agent harnesses, evals, and tooling. Previously led a 5-person full-stack pod at Signzy and cut mobile delivery time 87.5% through automation.
 
 ## Experience
 
-**Software Development Engineer - II** | imagined | Remote | June 2026 - Present
-What: Full-stack engineer specializing in mobile and web; builds consumer apps from first commit to Play Store and App Store. Tatva (React Native) news app built from scratch to first release in ~185 days, now 100k+ downloads; Meme'd (Flutter) released in ~15 days, now 100k+ downloads; continued Solo for Creators. Manages engineering hiring end to end and mentors interns.
+**SDE-II** | Imagined (Part of WLDD) | Bengaluru (In-Office) | June 2025 - Present
+What: Built Tatva from first commit to 100k+ downloads in ~185 days; helped release Meme'd in ~15 days, now 100k+ downloads; shipped features for Solo for Creators (50k+). Built AI-powered features and internal tooling across Next.js, Node.js, and Spring Boot backends. Ran engineering hiring end to end (JD, sourcing, screening, take-home, final round); mentored two interns to ship on Solo and Meme'd.
 How: React Native, Flutter, Next.js, Node.js.
 
-**Mobile Developer** | imagined | Bangalore (Remote) | June 2025 - June 2026
 
 **Flutter Developer (Freelance)** | imagined | Remote | November 2024 - September 2025
 What: Delivered 50+ features for Solo for Creators (50k+ downloads); built MVPs for OddJobs (Next.js) and Vibe Diary (Flutter, Node.js, Gemini).
@@ -58,42 +57,36 @@ What: Led the Investar India app rebrand, migrating from native Android to Flutt
 | Name | Issuer | Date |
 |------|--------|------|
 | **Flutter** | Coursera | June 2024 |
-| **Node.js and Express** | Coursera | June 2024 |
-| **Python** | Coursera | June 2024 |
 | **CI/CD** | LinkedIn Learning | June 2024 |
-| **Next.js** | Coursera | July 2024 |
-| **React Js** | Coursera | July 2024 |
-| **Kotlin** | Caster.io | May 2020 |
 
 ## Skills
 
 | Skill | Type | Level | Since |
 |-------|------|-------|-------|
-| **Flutter** | Core | 90 | 2018 |
-| **Node.js** | Core | 90 | 2022 |
-| **JavaScript/TypeScript** | Core | 90 | 2017 |
-| **Python** | Core | 90 | 2018 |
-| **React Native** | Core | 85 | 2021 |
-| **React/Next.js** | Core | 85 | 2023 |
-| **Kotlin** | Core | 85 | 2017 |
-| **Java SE/EE** | Core | 80 | 2017 |
-| **Swift** | Core | 75 | 2018 |
-| **Rust** | Special | 70 | 2024 |
-| **Go** | Special | 75 | 2024 |
 | **MCP** | Special | 80 | 2025 |
 | **LangChain** | Special | 75 | 2024 |
 | **Ollama** | Special | 80 | 2024 |
 | **OpenRouter** | Special | 75 | 2024 |
 | **llama.cpp** | Special | 75 | 2025 |
 | **RAG** | Special | 70 | 2024 |
-| **Firebase** | Special | 90 | 2017 |
-| **Express.js** | Special | 90 | 2024 |
+| **Prompt engineering** | Special | 80 | 2024 |
 | **Generative AI** | Special | 90 | 2024 |
+| **TypeScript/JavaScript** | Core | 90 | 2017 |
+| **Python** | Core | 90 | 2018 |
+| **Go** | Special | 75 | 2024 |
+| **Rust** | Special | 70 | 2024 |
+| **React/Next.js** | Core | 85 | 2023 |
+| **Node.js** | Core | 90 | 2022 |
+| **Express.js** | Special | 90 | 2024 |
+| **PostgreSQL** | Special | 75 | 2022 |
+| **MongoDB** | Special | 75 | 2022 |
 | **Docker** | Special | 80 | 2023 |
 | **GitHub Actions** | Special | 85 | 2022 |
-| **Observability** | Special | 70 | 2023 |
-| **Prompt engineering** | Special | 80 | 2024 |
-
+| **AWS S3** | Special | 75 | 2022 |
+| **Firebase** | Special | 90 | 2017 |
+| **Supabase** | Special | 70 | 2024 |
+| **Flutter** | Core | 90 | 2018 |
+| **React Native** | Core | 85 | 2021 |
 ## Shipped Apps & Products
 
 | Name | What | Platforms | Downloads |
